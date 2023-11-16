@@ -1,23 +1,23 @@
 Installation
 ============
 
-**my-package** supports Python >= 3.8.
+**simgen-ssg** supports Python >= 3.8.
 
 ## Installing with `pip`
 
-**my-package** is available [on PyPI](https://pypi.org/project/my-package/). Just run
+**simgen-ssg** is available [on PyPI](https://pypi.org/project/simgen-ssg/). Just run
 
 ```bash
-pip install my-package
+pip install simgen-ssg
 ```
 
 ## Installing from source
 
-To install **my-package** from source, first clone [the repository](https://github.com/allenai/python-package-template):
+To install **simgen-ssg** from source, first clone [the repository](https://github.com/sharmashobhit/simgen-ssg):
 
 ```bash
-git clone https://github.com/allenai/python-package-template.git
-cd python-package-template
+git clone https://github.com/sharmashobhit/simgen-ssg.git
+cd simgen-ssg
 ```
 
 Then run
