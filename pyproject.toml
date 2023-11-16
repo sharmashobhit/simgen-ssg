@@ -20,6 +20,9 @@ authors = [
 requires-python = ">=3.8"
 dependencies = [
   # Add your own dependencies here
+  "qdrant-client[fastembed]",
+  "fastapi",
+  "hypercorn",
 ]
 license = {file = "LICENSE"}
 
@@ -48,7 +51,9 @@ dev = [
     "sphinx-copybutton==0.5.2",
     "sphinx-autobuild==2021.3.14",
     "sphinx-autodoc-typehints==1.23.3",
-    "packaging"
+    "packaging",
+    "nbconvert",
+    "jupyter"
 ]
 
 [tool.setuptools.packages.find]
@@ -60,6 +65,10 @@ exclude = [
     "docs*",
     "scripts*"
 ]
+
+[project.scripts]
+simgen = "simgen_ssg.__main__:main"
+
 
 [tool.setuptools]
 include-package-data = true

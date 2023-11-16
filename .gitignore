@@ -49,3 +49,6 @@ __pycache__
 
 docs/build
 site/
+
+db
+local_cache
