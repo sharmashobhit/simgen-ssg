@@ -1,25 +1,26 @@
-import os
-import sys
-import time
-from qdrant_client import AsyncQdrantClient
-from qdrant_client.async_qdrant_fastembed import SUPPORTED_EMBEDDING_MODELS
+# from qdrant_client.async_qdrant_fastembed import SUPPORTED_EMBEDDING_MODELS
 import asyncio
-from hypercorn.config import Config
-from hypercorn.asyncio import serve as hypercorn_serve
-
-from typing import Union
-from qdrant_client.http import models
-from fastapi import FastAPI
-from simgen_ssg.watcher import files_updated_since
-from simgen_ssg.parsers import parser_for_file
-from simgen_ssg import utils
-import asyncclick as click
-from pathlib import Path
-from fastapi.responses import JSONResponse
+import logging
+import os
 
 # Import sqlite
 import sqlite3
-import logging
+import sys
+from pathlib import Path
+
+import asyncclick as click
+from fastapi import FastAPI
+from fastapi.responses import JSONResponse
+from hypercorn.asyncio import serve as hypercorn_serve
+from hypercorn.config import Config
+from qdrant_client import AsyncQdrantClient
+
+# from typing import Union
+from qdrant_client.http import models
+
+from simgen_ssg import utils
+from simgen_ssg.parsers import parser_for_file
+from simgen_ssg.watcher import files_updated_since
 
 fw_logger = logging.getLogger("file_watch")
 fw_logger.setLevel(logging.DEBUG)
@@ -79,7 +80,7 @@ async def read_item(req_file_path: str):
     try:
         parser = parser_for_file(file_path)
         content = parser.content
-    except FileNotFoundError as e:
+    except FileNotFoundError:
         # Return 404
         return JSONResponse({"error": "File not found"}, status_code=404)
     else:

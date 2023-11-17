@@ -1,6 +1,7 @@
+from pathlib import Path
+
 from simgen_ssg.parsers.base import BaseParser
 from simgen_ssg.parsers.markdown import MarkdownParser
-from pathlib import Path
 
 
 def parser_for_file(file_path: Path) -> BaseParser:
