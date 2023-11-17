@@ -7,4 +7,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+## [v0.1.0-rc1](https://github.com/sharmashobhit/simgen-ssg/releases/tag/v0.1.0-rc1) - 2023-11-17
+
 asd
