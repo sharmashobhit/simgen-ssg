@@ -24,8 +24,10 @@ def files_updated_since(path, last_mtime):
     for top_level in [x for x in os.listdir(req_path) if not x.startswith(".")]:
         for root, dirs, files in os.walk(req_path.joinpath(top_level)):
             for file_name in filter(file_filter, files):
-                if os.path.getmtime(os.path.join(root, file_name)) > last_mtime:
-                    yield os.path.join(root, file_name)
+                file_path = os.path.join(root, file_name)
+                file_mtime = os.path.getmtime(file_path)
+                if file_mtime > last_mtime:
+                    yield (file_path, file_mtime)
 
 
 # command_index = 1

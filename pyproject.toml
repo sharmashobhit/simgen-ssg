@@ -23,6 +23,7 @@ dependencies = [
   "qdrant-client[fastembed]",
   "fastapi",
   "hypercorn",
+  "asyncclick",
 ]
 license = {file = "LICENSE"}
 
