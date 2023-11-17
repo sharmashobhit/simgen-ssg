@@ -36,8 +36,9 @@ fw_logger.addHandler(stream_handler)
 app = FastAPI(debug=True)
 app.ready = False
 collection_name = "simgen_ssg"
-global q_client
-global con
+
+q_client: AsyncQdrantClient
+con: sqlite3.Connection
 
 
 def setup_qdrant(cache_dir):
@@ -76,9 +77,8 @@ async def read_item(req_file_path: str):
             break
     else:
         return JSONResponse({"error": "File not found"}, status_code=404)
-    file_path = Path(file_path)
     try:
-        parser = parser_for_file(file_path)
+        parser = parser_for_file(Path(file_path))
         content = parser.content
     except FileNotFoundError:
         # Return 404
@@ -114,6 +114,7 @@ async def read_item(req_file_path: str):
 
 
 async def _file_watcher(dir_path):
+    global con
     res = con.execute("SELECT updated_at from indexes ORDER BY updated_at DESC LIMIT 1").fetchone()
     last_mtime = res[0] if (res and len(res) > 0) else 0
     fw_logger.info(last_mtime)
