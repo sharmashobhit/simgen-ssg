@@ -68,7 +68,7 @@ exclude = [
 ]
 
 [project.scripts]
-simgen = "simgen_ssg.__main__:main"
+simgen = "simgen_ssg.__main__:cli"
 
 
 [tool.setuptools]

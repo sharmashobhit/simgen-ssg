@@ -1,0 +1,14 @@
+# Docker Dev
+version: "3.7"
+services:
+  server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      # - ./docs/:/content/
+      - /home/shobhit/repos/github.com/sharmashobhit/sharmashobh.it/src/content:/content
+    ports:
+      - 8000:8000
+    command: ["simgen", "serve", "--dir", "/content/", "--bind", "0.0.0.0:8000"]
+    # command: ["sleep", "500"]

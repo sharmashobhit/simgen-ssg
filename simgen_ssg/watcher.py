@@ -3,7 +3,7 @@ import os
 from pathlib import Path
 
 blacklist = ["^\.", "\.swp$"]
-whitelist = ["\.md$", "\.txt$"]
+whitelist = ["[^_].*\.md$", "\.txt$"]
 
 
 def file_filter(name):
@@ -25,9 +25,11 @@ def files_updated_since(path, last_mtime):
         for root, dirs, files in os.walk(req_path.joinpath(top_level)):
             for file_name in filter(file_filter, files):
                 file_path = os.path.join(root, file_name)
-                file_mtime = os.path.getmtime(file_path)
-                if file_mtime > last_mtime:
-                    yield (file_path, file_mtime)
+                # TODO: does not support symlinks right now
+                if os.path.isfile(file_path):
+                    file_mtime = os.path.getmtime(file_path)
+                    if file_mtime > last_mtime:
+                        yield (file_path, file_mtime)
 
 
 # command_index = 1
