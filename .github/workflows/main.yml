@@ -87,13 +87,12 @@ jobs:
         run: |
           . .venv/bin/activate
           ${{ matrix.task.run }}
-
-      - name: Upload package distribution files
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
         if: matrix.task.name == 'Build'
-        uses: actions/upload-artifact@v3
         with:
-          name: package
-          path: dist
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs/build/html
 
       - name: Clean up
         if: always()
