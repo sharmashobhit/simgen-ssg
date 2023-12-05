@@ -217,11 +217,7 @@
 </pre></div>
 </div>
 <p>You can then run using the following command:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-v<span class="w"> </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>/src/content/:/docs/<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-p<span class="w"> </span><span class="m">8001</span>:8000<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>ghcr.io/sharmashobhit/simgen-ssg:latest<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>simgen<span class="w"> </span>serve<span class="w"> </span>--dir<span class="w"> </span>/docs/<span class="w"> </span>--bind<span class="w"> </span><span class="m">0</span>.0.0.0:8000<span class="w"> </span>--watchdocker<span class="w"> </span>run<span class="w"> </span>-p<span class="w"> </span><span class="m">8000</span>:8000<span class="w"> </span>ghcr.io/sharmashobhit/simgen-ssg:latest<span class="sb">`</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>run<span class="w"> </span>-v<span class="w"> </span>.:/docs/<span class="w"> </span>-p<span class="w"> </span><span class="m">8000</span>:8000<span class="w"> </span>ghcr.io/sharmashobhit/simgen-ssg:latest
 </pre></div>
 </div>
 </section>
@@ -257,7 +253,7 @@
         <div class="bottom-of-page">
           <div class="left-details">
             <div class="copyright">
-                Copyright &#169; 2023, Allen Institute for Artificial Intelligence
+                Copyright &#169; 2023, Shobhit S.
             </div>
             Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
             
