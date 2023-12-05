@@ -17,9 +17,5 @@ docker pull ghcr.io/sharmashobhit/simgen-ssg:latest
 You can then run using the following command:
 
 ```bash
-docker run -d \
-    -v $(pwd)/src/content/:/docs/ \
-    -p 8001:8000 \
-    ghcr.io/sharmashobhit/simgen-ssg:latest \
-    simgen serve --dir /docs/ --bind 0.0.0.0:8000 --watchdocker run -p 8000:8000 ghcr.io/sharmashobhit/simgen-ssg:latest`
+docker run -v .:/docs/ -p 8000:8000 ghcr.io/sharmashobhit/simgen-ssg:latest
 ```

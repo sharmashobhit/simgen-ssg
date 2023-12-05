@@ -10,4 +10,4 @@ services:
       - /home/shobhit/repos/github.com/sharmashobhit/sharmashobh.it/src/content:/docs
     ports:
       - 8001:8000
-    # command: ["python", "simgen_ssg/__main__.py", "serve", "--dir", "/content/", "--bind", "0.0.0.0:8000", "--watch"]
+    command: ["python", "simgen_ssg/__main__.py", "serve", "--dir", "/docs/", "--bind", "0.0.0.0:8000", "--watch"]

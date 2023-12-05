@@ -23,8 +23,8 @@ from simgen_ssg import VERSION, VERSION_SHORT  # noqa: E402
 # -- Project information -----------------------------------------------------
 
 project = "simgen-ssg"
-copyright = f"{datetime.today().year}, Allen Institute for Artificial Intelligence"
-author = "Allen Institute for Artificial Intelligence"
+copyright = f"{datetime.today().year}, Shobhit S."
+author = "Shobhit S."
 version = VERSION_SHORT
 release = VERSION
 
