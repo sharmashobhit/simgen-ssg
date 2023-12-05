@@ -89,10 +89,16 @@ jobs:
           ${{ matrix.task.run }}
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
-        if: matrix.task.name == 'Build'
+        if: matrix.task.name == 'Docs'
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./docs/build/html
+      - name: Upload package distribution files
+        if: matrix.task.name == 'Build'
+        uses: actions/upload-artifact@v3
+        with:
+          name: package
+          path: dist
 
       - name: Clean up
         if: always()
