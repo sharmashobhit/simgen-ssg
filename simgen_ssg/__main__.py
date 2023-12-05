@@ -225,5 +225,26 @@ async def serve(dir, bind, watch, cache_dir, model):
         sys.exit(1)
 
 
+@cli.command()
+@click.option("--dir", "-d", default=["."], help="Content directory")
+@click.option("--output-dir", "-o", default="./simgen-output/", help="Output directory")
+@click.option("--cache-dir", "-c", default="./.simgen_cache", help="Cache directory")
+@click.option("--model", "-m", default="BAAI/bge-small-en", help="Model name")
+async def generate(dir, output_dir, cache_dir, model):
+    """
+    Generate the static site
+    """
+    setup_qdrant(cache_dir)
+    global q_client
+    q_client.set_model(model)
+    app.content_dirs = [dir]
+    await file_watcher(False, dirs=[dir])
+    res = con.execute("SELECT * from indexes ORDER BY updated_at").fetchall()
+    for r in res:
+        print(r)
+    # print(dir, output_dir)
+    pass
+
+
 if __name__ == "__main__":
     cli(_anyio_backend="asyncio")

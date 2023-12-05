@@ -1,0 +1,15 @@
+# action.yml
+name: 'SimGen'
+description: 'Similarity generator for static websites'
+inputs:
+  content-dir:  # id of input
+    description: 'Map content directory'
+    required: true
+outputs:
+  time: # id of output
+    description: 'The time we greeted you'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.who-to-greet }}

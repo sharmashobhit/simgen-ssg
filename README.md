@@ -6,7 +6,7 @@ This project aims to provide a build time API for statically generated sites. It
 
 ## How does it work?
 
-The project uses Qdrant vector search under the hood to generate vector embeddings for the chunks in your site. It then provides an API to query the vector embeddings across the database to generate related content recommendations.
+The project uses Qdrant vector database along with [fastembed](https://qdrant.github.io/fastembed/) under the hood to generate vector embeddings for the chunks in your site. It then provides an API to query the vector embeddings across the database to generate related content recommendations.
 
 ## How do I use it?
 

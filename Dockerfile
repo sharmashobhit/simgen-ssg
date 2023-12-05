@@ -18,3 +18,5 @@ EXPOSE 8000
 
 # # Run the command to start the server
 RUN ["simgen", "fetch-model"]
+
+CMD [ "simgen", "serve", "--dir", "/docs/", "--bind", "0.0.0.0:8000", "--watch" ]

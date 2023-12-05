@@ -15,7 +15,7 @@ overview
 
 CHANGELOG
 CONTRIBUTING
-License <https://raw.githubusercontent.com/allenai/simgen-ssg/main/LICENSE>
+License <https://raw.githubusercontent.com/sharmashobhit/simgen-ssg/main/LICENSE>
 GitHub Repository <https://github.com/sharmashobhit/simgen-ssg>
 ```
 

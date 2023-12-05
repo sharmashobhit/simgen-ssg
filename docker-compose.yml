@@ -6,9 +6,8 @@ services:
       context: .
       dockerfile: Dockerfile
     volumes:
-      # - ./docs/:/content/
-      - /home/shobhit/repos/github.com/sharmashobhit/sharmashobh.it/src/content:/content
+      - .:/app/
+      - /home/shobhit/repos/github.com/sharmashobhit/sharmashobh.it/src/content:/docs
     ports:
-      - 8000:8000
-    command: ["simgen", "serve", "--dir", "/content/", "--bind", "0.0.0.0:8000"]
-    # command: ["sleep", "500"]
+      - 8001:8000
+    # command: ["python", "simgen_ssg/__main__.py", "serve", "--dir", "/content/", "--bind", "0.0.0.0:8000", "--watch"]
