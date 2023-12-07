@@ -1,7 +1,7 @@
+import logging
 import os
 import re
 from pathlib import Path
-import logging
 
 blacklist = ["^\.", "\.swp$"]
 whitelist = ["[^_].*\.md$"]
