@@ -1,15 +1,5 @@
-import asyncio
 import logging
-import os
 
-# Import sqlite
-import time
-
-from fastapi import FastAPI
-from fastapi.responses import JSONResponse
-from qdrant_client.http import models
-
-from simgen_ssg import utils
 from simgen_ssg.cli import cli
 
 fw_logger = logging.getLogger("file_watch")

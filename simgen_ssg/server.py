@@ -1,9 +1,9 @@
 import asyncio
-import logging
 import os
 import sqlite3
+import sys
 from pathlib import Path
-from typing import List
+from typing import List, Optional
 
 from hypercorn.asyncio import serve as hypercorn_serve
 from hypercorn.config import Config
@@ -23,8 +23,8 @@ class QdrantServer:
     def __init__(self, cache_dir, model):
         self.cache_dir = cache_dir
         self.model = model
-        self.qdrant_client = None
-        self.sql_client = None
+        self.qdrant_client: Optional[AsyncQdrantClient] = None
+        self.sql_client: Optional[sqlite3.Connection] = None
 
     async def setup_qdrant(self, force=False):
         if force or self.qdrant_client is None:
@@ -52,6 +52,8 @@ class QdrantServer:
 
     async def fetch_model(self):
         await self.setup_qdrant()
+        if self.qdrant_client is None:
+            raise Exception("Qdrant client not initialized")
         self.qdrant_client.set_model(self.model)
         existing_collections = await self.qdrant_client.get_collections()
         logger.info(f"Existing collections: {existing_collections.collections}")
@@ -74,6 +76,8 @@ class QdrantServer:
         content_chunks = list(utils.chunks(content, 500))
         # Batch insert into both sqlite and qdrant
         logger.debug(f"Saving content to db: {id}. Found chunks: {len(content_chunks)}")
+        if self.sql_client is None or self.qdrant_client is None:
+            raise Exception("Databases not initialized")
         self.sql_client.execute(
             "INSERT OR IGNORE INTO indexes (file_path, chunk_id, updated_at) VALUES {};".format(
                 ",".join(
@@ -104,6 +108,8 @@ class QdrantServer:
         )
 
     async def _file_watcher(self, dir_path):
+        if self.sql_client is None:
+            raise Exception("Databases not initialized")
         res = self.sql_client.execute(
             "SELECT updated_at from indexes ORDER BY updated_at DESC LIMIT 1"
         ).fetchone()
@@ -126,13 +132,11 @@ class QdrantServer:
         await asyncio.gather(*[self._file_watcher(dir) for dir in directories])
         await queue.put({"ready": True})
 
-        return 1
-
 
 async def mark_ready(app, queue):
     while True:
         resp = await queue.get()
-        if type(resp) == dict and "ready" in resp:
+        if isinstance(resp, dict) and "ready" in resp:
             app.ready = resp["ready"]
             if app.ready:
                 return
@@ -148,7 +152,7 @@ async def run(directories, bind, watch, cache_dir, model):
     try:
         hypercorn_config = Config()
         hypercorn_config.bind = bind
-        queue = asyncio.Queue()
+        queue: asyncio.Queue = asyncio.Queue()
         app.queue = queue
         await asyncio.gather(
             hypercorn_serve(app, hypercorn_config),
