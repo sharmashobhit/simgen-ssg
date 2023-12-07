@@ -7,7 +7,6 @@
 
 installation
 overview
-production
 ```
 
 ```{toctree}
