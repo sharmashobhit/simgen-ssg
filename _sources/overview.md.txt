@@ -103,3 +103,22 @@ The response will be a JSON array of recommendations. Each recommendation will h
   }
 ]
 ```
+
+## Deployment
+
+`simgen-ssg` is available as a Docker image. The easiest way to get started is to use `docker-compose` to deploy it alongside your app.
+
+```yaml
+version: "3.3"
+
+services:
+  simgen:
+    image: ghcr.io/sharmashobhit/simgen-ssg:latest
+    ports:
+      - 8000:8000
+    volumes:
+      - ./docs:/app/docs
+  web: ...
+```
+
+In your app you can now use the endpoint `http://simgen:8000/recommend` to get recommendations for a given page or text.
