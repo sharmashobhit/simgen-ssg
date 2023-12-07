@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+## [v0.1.1-rc5](https://github.com/sharmashobhit/simgen-ssg/releases/tag/v0.1.1-rc5) - 2023-12-07
+
 ## [v0.1.1-rc4](https://github.com/sharmashobhit/simgen-ssg/releases/tag/v0.1.1-rc4) - 2023-12-07
 
 ## [v0.1.1-rc3](https://github.com/sharmashobhit/simgen-ssg/releases/tag/v0.1.1-rc3) - 2023-12-07
