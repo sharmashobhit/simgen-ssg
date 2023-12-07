@@ -160,7 +160,8 @@
 <ul class="current">
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="overview.html#usage-guide">Usage Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html#usage">Usage</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Development</span></p>
 <ul>
@@ -205,15 +206,28 @@
           <section id="installation">
 <h1>Installation<a class="headerlink" href="#installation" title="Permalink to this heading">#</a></h1>
 <p><strong>simgen-ssg</strong> supports Python &gt;= 3.8.</p>
+<section id="docker-installation-recommended">
+<h2>Docker installation (Recommended)<a class="headerlink" href="#docker-installation-recommended" title="Permalink to this heading">#</a></h2>
+<p>The image is available on Github Container Registry. You can pull the image using:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>pull<span class="w"> </span>ghcr.io/sharmashobhit/simgen-ssg:latest
+</pre></div>
+</div>
+<p>You can then run using the following command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>run<span class="w"> </span>-v<span class="w"> </span>.:/docs/<span class="w"> </span>-p<span class="w"> </span><span class="m">8000</span>:8000<span class="w"> </span>ghcr.io/sharmashobhit/simgen-ssg:latest
+</pre></div>
+</div>
+</section>
+<section id="installing-the-simgen-binary">
+<h2>Installing the <code class="docutils literal notranslate"><span class="pre">simgen</span></code> binary<a class="headerlink" href="#installing-the-simgen-binary" title="Permalink to this heading">#</a></h2>
 <section id="installing-with-pip">
-<h2>Installing with <code class="docutils literal notranslate"><span class="pre">pip</span></code><a class="headerlink" href="#installing-with-pip" title="Permalink to this heading">#</a></h2>
+<h3>Installing with <code class="docutils literal notranslate"><span class="pre">pip</span></code><a class="headerlink" href="#installing-with-pip" title="Permalink to this heading">#</a></h3>
 <p><strong>simgen-ssg</strong> is available <a class="reference external" href="https://pypi.org/project/simgen-ssg/">on PyPI</a>. Just run</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>simgen-ssg
 </pre></div>
 </div>
 </section>
 <section id="installing-from-source">
-<h2>Installing from source<a class="headerlink" href="#installing-from-source" title="Permalink to this heading">#</a></h2>
+<h3>Installing from source<a class="headerlink" href="#installing-from-source" title="Permalink to this heading">#</a></h3>
 <p>To install <strong>simgen-ssg</strong> from source, first clone <a class="reference external" href="https://github.com/sharmashobhit/simgen-ssg">the repository</a>:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/sharmashobhit/simgen-ssg.git
 <span class="nb">cd</span><span class="w"> </span>simgen-ssg
@@ -221,6 +235,14 @@
 </div>
 <p>Then run</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.
+</pre></div>
+</div>
+</section>
+</section>
+<section id="running-the-binary">
+<h2>Running the binary<a class="headerlink" href="#running-the-binary" title="Permalink to this heading">#</a></h2>
+<p>Once you have installed the binary, you can run it using:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>simgen<span class="w"> </span>serve<span class="w">  </span>--dir<span class="w"> </span>/path/to/directory
 </pre></div>
 </div>
 </section>
@@ -289,8 +311,13 @@
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">Installation</a><ul>
+<li><a class="reference internal" href="#docker-installation-recommended">Docker installation (Recommended)</a></li>
+<li><a class="reference internal" href="#installing-the-simgen-binary">Installing the <code class="docutils literal notranslate"><span class="pre">simgen</span></code> binary</a><ul>
 <li><a class="reference internal" href="#installing-with-pip">Installing with <code class="docutils literal notranslate"><span class="pre">pip</span></code></a></li>
 <li><a class="reference internal" href="#installing-from-source">Installing from source</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#running-the-binary">Running the binary</a></li>
 </ul>
 </li>
 </ul>
