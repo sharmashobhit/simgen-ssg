@@ -35,7 +35,10 @@ async def save_content(id: str, body: str, collection_name: str):
 
 @app.get("/recommend")
 async def get_recommendations(
-    id: Optional[str] = "", q: Optional[str] = "", limit: Optional[int] = 1
+    collection: Optional[str],
+    id: Optional[str] = "",
+    q: Optional[str] = "",
+    limit: Optional[int] = 5,
 ):
     """
     Add vectors to the collection
@@ -47,7 +50,6 @@ async def get_recommendations(
         logger.info(f"Getting recommendations for {file_path}")
         for dir in app.content_dirs:
             new_path = os.path.join(dir, id)
-
             if os.path.exists(new_path):
                 file_path = os.path.abspath(new_path)
                 break
@@ -70,11 +72,18 @@ async def get_recommendations(
                     key="file_path",
                     match=models.MatchValue(value=id),
                 ),
-            ]
+            ],
+            must=[
+                models.FieldCondition(
+                    key="collection",
+                    match=models.MatchValue(value=collection),
+                )
+            ],
         ),
         limit=limit,
     )
     response = list()
+    logger.debug(f"Found {len(qdrant_result)} results")
     for result in qdrant_result:
         result.metadata.update({"score": result.score})
         result.metadata.pop("document")

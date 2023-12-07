@@ -9,7 +9,7 @@ from hypercorn.asyncio import serve as hypercorn_serve
 from hypercorn.config import Config
 from qdrant_client import AsyncQdrantClient
 
-from simgen_ssg import http as simgen_http
+from simgen_ssg import simgen_http as simgen_http
 from simgen_ssg import utils
 from simgen_ssg.parsers import parser_for_file
 from simgen_ssg.watcher import files_updated_since
