@@ -41,3 +41,10 @@ GitHub Repository <https://github.com/sharmashobhit/simgen-ssg>
 - **Recipe or Lifestyle Blogs**: Suggest similar recipes or articles catering to specific user tastes or interests.
 - **Job Boards**: Offer job recommendations based on user profiles or previous job searches, enhancing user experience and increasing the likelihood of finding suitable positions.
 - **Travel Websites**: Recommend similar destinations, accommodations, or activities, making trip planning more personalized and engaging.
+
+# Thanks
+
+- [Qdrant](https://qdrant.tech/) for providing the vector database and the underlying search engine.
+- [fastembed](https://qdrant.github.io/fastembed/) for providing the embeddings generation library.
+- [fastapi](https://fastapi.tiangolo.com/) for providing the web framework.
+- [Simon Willison's blog](https://til.simonwillison.net/llms/openai-embeddings-related-content) for the inspiration behind this project.
